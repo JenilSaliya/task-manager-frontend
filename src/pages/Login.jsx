@@ -10,7 +10,7 @@ import { toastError, toastSuccess } from '../services/toast'
 const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
-  const [user, setUser] = useState(undefined)
+  const [user, setUser] = useState([])
   const navigate = useNavigate()
 
   const handleShowPass = () => {

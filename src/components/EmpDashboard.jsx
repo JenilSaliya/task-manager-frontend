@@ -62,7 +62,7 @@ const EmpDashboard = () => {
     if (task.length) {
 
       const today = new Date()
-      const overDuesId = task.filter(t => new Date(t.dueDate) < today && t.status != 'complete' && t.status != 'failed' && t.status != 'overdue').map(t => t._id)
+      const overDuesId = Array.isArray(task) ? task.filter(t => new Date(t.dueDate) < today && t.status !== 'complete' && t.status !== 'failed' && t.status !== 'overdue').map(t => t._id): [];
       setOverDueTaskId(overDuesId)
       const newTasks = task.filter(t => t.status == 'pending')
       setNewCount(newTasks.length)
@@ -176,7 +176,7 @@ const EmpDashboard = () => {
                 {item.status == 'pending' && <button className='rounded-lg w-full bg-blue-50 text-black font-semibold py-1 mb-3 shadow-lg/40 active:shadow-none active:inset-shadow-sm/30' onClick={() => updateTaskStatus(item._id, item, user.id, 'accept')}>Accept</button>}
                 {item.status == 'accept' && <div className='w-full flex gap-2 items-center'> <button className='rounded-lg w-1/2 bg-blue-50 text-black font-semibold py-1 mb-3 shadow-lg/40 active:shadow-none active:inset-shadow-sm/30' onClick={() => updateTaskStatus(item._id, item, user.id, 'complete')}>Complete</button>
                   <button className='rounded-lg w-1/2 bg-blue-50 text-black font-semibold py-1 mb-3 shadow-lg/40 active:shadow-none active:inset-shadow-sm/30' onClick={() => updateTaskStatus(item._id, item, user.id, 'failed')}>Failed</button></div>}
-                {(item.status == 'complete'||item.status=='failed') && <div className='w-full flex gap-2 items-center'> <button className='rounded-lg w-full bg-blue-50 text-black font-semibold py-1 mb-3 shadow-lg/40 active:shadow-none active:inset-shadow-sm/30' onClick={() => updateTaskStatus(item._id, item, user.id, 'accept')}>{`Reopen (status : ${item.status})`}</button></div>}
+                {(item.status == 'complete' || item.status == 'failed') && <div className='w-full flex gap-2 items-center'> <button className='rounded-lg w-full bg-blue-50 text-black font-semibold py-1 mb-3 shadow-lg/40 active:shadow-none active:inset-shadow-sm/30' onClick={() => updateTaskStatus(item._id, item, user.id, 'accept')}>{`Reopen (status : ${item.status})`}</button></div>}
 
               </div>
 

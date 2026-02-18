@@ -10,16 +10,24 @@ const Navbar = () => {
 
   const checkAdmin = async () => {
 
-    const { result } = await getUser()
-    result.map(i => {
+    // const { result } = await getUser()
+    // result.map(i => {
 
-      if (i.name == 'admin') {
+    //   if (i.name == 'admin') {
 
-        setExistAdmin(true)
+    //     setExistAdmin(true)
 
+    //   }
+
+    // })
+    const res = await getUser();
+    const result = Array.isArray(res?.result) ? res.result : [];
+
+    result.forEach(i => {
+      if (i.name === 'admin') {
+        setExistAdmin(true);
       }
-
-    })
+    });
 
   }
 

@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate()
   const location = useLocation()
-  const [user, setUser] = useState(undefined)
+  const [user, setUser] = useState([])
 
   useEffect(() => {
 
