@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@layer utilities{
+
+  .noScroll::-webkit-scrollbar{
+
+    display: none;
+
+  }
+
+}
+
+::-webkit-scrollbar{
+
+  display: none;
+
+}
+
+
+
+body{
+
+  background: rgb(14, 13, 13);
+  color: white;
+
+}
+
+input {
+
+  color-scheme: dark;
+  
+}
